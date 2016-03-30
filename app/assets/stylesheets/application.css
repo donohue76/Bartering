@@ -20,6 +20,10 @@ body {
   width: 100%;
 }
 
+.profile_table {
+  table-layout: fixed;
+}
+
 /*#navigation {
 background-color: #031724;
 color: #1f3842;

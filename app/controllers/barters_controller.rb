@@ -10,6 +10,7 @@ class BartersController < ApplicationController
 
   def index
     @barters = Barter.all
+    # @user = current_user
   end
 
   def goods

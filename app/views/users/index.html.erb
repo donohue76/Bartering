@@ -1,29 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Users</h1>
+<h1>Trader Profile</h1>
+
+<table class="profile_table" id="profile_table">
+  <thead>
+    <tr class="tr-name">
+      <td>Name: </td>
+    </tr>
+    <tr class="tr-Username">
+      <td>Username: </td>
+    </tr>
+    <tr class="tr-email">
+      <td>Email: </td><td><%= @user.email %></td>
+    </tr>
+    <tr class="tr-address">
+      <td>Address: </td>
+    </tr>
+    <tr class="tr-phone">
+      <td>Phone: </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @user.email %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Username</th>
-      <th>Email</th>
+      <th>Item for Trade</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
       <tr>
-        <td><%= user.username %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td></td>
       </tr>
-    <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New Barter', new_barter_path %>
+
+<%#= link_to 'Edit Profile', edit_user_path %>
