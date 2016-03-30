@@ -26,6 +26,7 @@
         <td><%= barter.category %></td>
         <td><%= barter.expiration %></td>
         <td><%= barter.neighborhood.capitalize %></td>
+        <td><%= link_to 'Select', barter_path(barter) %></td>
         <td><%= link_to 'Edit', edit_barter_path(barter) %></td>
         <td><%= link_to 'Destroy', barter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
