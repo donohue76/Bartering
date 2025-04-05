@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy, :accept]
 
   # GET /comments
   # GET /comments.json
@@ -10,6 +10,14 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+  end
+
+  def accept
+    # barter = Barter.find(params[:id])
+    # barter.update_attribute(:comment, :accept => true)
+    # comment = Comment.find(params[:comment_id)
+    # comment = Comment.find(id)
+    # comment.update_attribute(:accept => true)
   end
 
   # GET /comments/new
@@ -62,6 +70,23 @@ class CommentsController < ApplicationController
       format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # The view will talk to this controller, and run this method. This method will talk to the model and change a value in the database, by running the 'set_accepted' method.
+  def accept
+    @comment.set_accepted
+    barter = @comment.barter_id
+    # on barter table pull barter id and update value to true
+    Barter.find(barter).update(accept: true)
+    redirect_to barter_path(barter)
+  end
+
+  def decline
+    @comment = Comment.find(params[:id])
+    @comment.accept = false
+    @comment.save
+    barter = @comment.barter_id
+    redirect_to barter_path(barter)
   end
 
   private

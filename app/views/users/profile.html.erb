@@ -1,0 +1,102 @@
+<p id="notice"><%= notice %></p>
+
+<h1 id='profile'>My Profile Page</h1>
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>User:</strong>
+  <%= @user.email %>
+</p>
+
+
+<!-- <p>
+  <strong>Password:</strong>
+  <%= "Blocked for your security" %>
+</p> -->
+
+
+<%= link_to 'Edit Profile', edit_user_path(@user) %> |
+<%= link_to 'Back', user_path(current_user.id) %> |
+<%= link_to 'Create New Barter', new_barter_path %></th>
+
+<table class="table table-hover" id="">
+  <thead>
+    <tr>
+      <th id="information"><h2>My Listing Information</h2>
+    </tr>
+    <tr>
+      <th>Image</th>
+      <th>Product</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Neighborhood</th>
+      <th>Interested In</th>
+      <th>Expiration</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+​
+<tbody class="table table-bordered" id="infotd">
+    <% @user.barters.each do |barter| %>
+    <tr>
+        <% if barter.image_file_name %>
+          <td><%= link_to image_tag(barter.image.url(:small)), barter.image.url %></td>
+        <% else %>
+          <td>No Image</td>
+        <% end %>
+        <td><%= barter.product %></td>
+        <td><%= barter.description %></td>
+        <td><%= barter.category %></td>
+        <td><%= barter.neighborhood %></td>
+        <td><%= barter.interested_in %></td>
+        <td><%= barter.expiration %></td>
+        <td><%= link_to 'Select', barter_path(barter) %></td>
+        <td><%= link_to 'Edit', edit_barter_path(barter) %></td>
+        <!-- <td><#%= link_to 'Destroy', barter, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+    </tr>
+    <% end %>
+</tbody>
+</table>
+</br>
+<table class="table table-hover" id="">
+  <thead>
+    <tr>
+      <th id="notifications"><h2>Notifications</h2>
+    <tr>
+      <th>Accepted</th>
+      <th>Product</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Neighborhood</th>
+      <th>Interested In</th>
+      <th>Expiration</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+​
+<tbody class="table table-bordered" id="infotd">
+        <!-- get comment's 'accept column' from db, if comment value 'true' post in user2 notifications 'Accepted' else post: 'Declined' -->
+    <% @comments.each do |comment| %>
+    <tr>
+        <% if comment.accept == nil %>
+            <td> pending </td>
+          <% elsif comment.accept == false %>
+            <td> declined </td>
+          <% else %>
+            <td> accepted </td>
+        <% end %>
+
+        <td><%= comment.barter.product %></td>
+        <td><%= comment.barter.description %></td>
+        <td><%= comment.barter.category %></td>
+        <td><%= comment.barter.neighborhood %></td>
+        <td><%= comment.barter.interested_in %></td>
+        <td><%= comment.barter.expiration %></td>
+    </tr>
+    <% end %>
+
+</tbody>
+</table>
+</br>
+</br>

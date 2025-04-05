@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Bartering</title>
+  <script src="./Bartering_files/jquery-1.11.0.min.js"></script>
+  <!--formden.js communicates with FormDen server to validate fields and submit via AJAX -->
+<script type="text/javascript" src="./Bartering_files/formden.js"></script>
+
+<!-- Special version of Bootstrap that is isolated to content wrapped in .bootstrap-iso -->
+<link rel="stylesheet" href="./Bartering_files/bootstrap-iso.css">
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="./Bartering_files/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="./Bartering_files/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="./Bartering_files/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<link rel="stylesheet" media="all" href="./Bartering_files/application.self-51771a1b66def07b79482cdda3e6cd5538c489b97f2dbe8e579d0673203638bc.css" data-turbolinks-track="true">
+<script src="./Bartering_files/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js" data-turbolinks-track="true"></script>
+<script src="./Bartering_files/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js" data-turbolinks-track="true"></script>
+<script src="./Bartering_files/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js" data-turbolinks-track="true"></script>
+<script src="./Bartering_files/barter.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="true"></script>
+<script src="./Bartering_files/barters.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="true"></script>
+<script src="./Bartering_files/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="true"></script>
+<script src="./Bartering_files/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="true"></script>
+<script src="./Bartering_files/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js" data-turbolinks-track="true"></script>
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="Fhw5G8anDQORPX+hfVuy6ELE2e7suMHdbNo3ms3DQdlPmmfB/ixN6Y+e6FVfXT/K/5juYjJhxUKmaAJBwYz0zg==">
+</head>
+<body class="page">
+
+  <div class="container">
+
+    <!-- The justified navigation menu is meant for single line per list item.
+    Multiple lines will require custom code not provided by Bootstrap. -->
+    <div class="masthead">
+        <h3 id="tradingpost">TRADE 'N' POST
+        </h3>
+        <nav>
+            <ul class="nav nav-justified" id="navigation">
+                <li>
+                    <a href="./Bartering_files/Bartering.html">Home</a>
+                </li>
+
+                <!-- devise login/logout -->
+                <li>
+                    <a href="http://localhost:3000/profile">Profile</a>
+                </li>
+                <li>
+                    <a rel="nofollow" data-method="delete" href="http://localhost:3000/users/sign_out">Logout</a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="http://localhost:3000/#" class="dropdown-toggle" data-toggle="dropdown">Location <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
+                        <li><a href="http://localhost:3000/barters">All Listings</a></li>
+                        <li class="nav-divider"></li>
+                        <li><a href="http://localhost:3000/hillcrest">Hillcrest</a></li>
+                        <li class="nav-divider"></li>
+                        <li><a href="http://localhost:3000/north_park">North Park</a></li>
+                        <li class="nav-divider"></li>
+                        <li><a href="http://localhost:3000/kensington">Kensington</a></li>
+                        <li class="nav-divider"></li>
+                        <li><a href="http://localhost:3000/university_heights">University Heights</a></li>
+                        <li class="nav-divider"></li>
+                        <li><a href="http://localhost:3000/little_italy">Little Italy</a></li>
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="http://localhost:3000/#" class="dropdown-toggle" data-toggle="dropdown">Categories<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+
+                        <li class="dropdown-header"></li>
+                        <li><a href="http://localhost:3000/goods">Goods</a></li>
+                        <li class="nav-divider"></li>
+                        <li><a href="http://localhost:3000/services">Services</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+  
+
+
+
+
+
+  <br>
+  <h4 id="intro_header">Welcome to the Trade 'N' Post &lt;=|=&gt;</h4>
+  <p id="intro_paragraph">
+
+
+      At Trade 'N' Post you can freely exchange goods and services in a cash-free environment.<br>
+      The history of bartering dates all the way back to 6000BC when the Phoenicians bartered goods to those located in various cities across the ocean. In the modern age, with the advent of money, bartering was more organized. In this age of technology Trade 'N' Post is here for you.
+
+  </p>
+
+<div class="picture">
+  <div class="row">
+    <div class="col-md-12">
+    <img class="img-responsive center-block" style="width: 100%;" src="./Bartering_files/Barter-Exchange-Trading-ecdf47673a78bab770a04dedce4477982ea1b1c3b032ff5a4ca582a3f3498108.jpg" alt="Barter exchange trading">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<footer class="footer">
+  <div class="footer-container">
+    <p class="text">An RCD3 Production © 2016</p>
+  </div>
+</footer>
+
+
+
+
+
+
+</body></html>

@@ -13,93 +13,114 @@
     </div>
   <% end %>
 
-
-
 <!--bootstap form for creating new barter items -->
 <div class="bootstrap-iso">
- <div class="container-fluid">
-  <div class="row" id="formbackground">
-   <div class="col-md-6 col-sm-6 col-xs-12">
-     <div class="form-group ">
-      <label class="control-label requiredField" for="product">Product</label>
-      <input class="form-control" id="product" name="barter[product]" placeholder="Enter good or service here" type="text"/>
-     </div>
-     <div class="form-group ">
-      <label class="control-label requiredField" for="textarea" id="description">
-       Description
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
-      <textarea class="form-control" cols="40" id="textarea" name="barter[description]" placeholder="describe your good or service" rows="5"></textarea>
-     </div>
-     <div class="form-group" id="div_radio">
-      <label class="control-label requiredField" for="radio">
-       Select a Choice
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
-      <div class="">
-       <label class="radio-inline">
-        <input name="barter[category]" type="radio" value="Services"/>
-        Services
-       </label>
-       <label class="radio-inline">
-        <input name="barter[category]" type="radio" value="Goods"/>
-        Goods
-       </label>
-      </div>
-     </div>
-     <div class="form-group ">
-      <label class="control-label requiredField" for="select">
-       Neighborhood
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
-      <select class="select form-control" id="select" name="barter[neighborhood]">
-        <option disabled="disabled" selected="selected">Select a Neighborhood</option>
-       <option value="hillcrest">
-        Hillcrest
-       </option>
-       <option value="little italy">
-        Little Italy
-       </option>
-       <option value="university heights">
-        University Heights
-       </option>
-       <option value="kensington">
-        Kensington
-       </option>
-       <option value="north park">
-        North Park
-       </option>
-      </select>
-     </div>
-     <div class="form-group ">
-      <label class="control-label requiredField" for="date">
-       Expiration Date (YEAR/MO/DAY format)
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
-      <input class="form-control" id="date" name="barter[expiration]" placeholder="YYYY/MM/DD" type="text"/>
-      <span class="help-block" id="hint_date">
-       Set an expiration date for your goods or services. Your post will be automatically removed if still active on this date. For perishable goods, please indicate how long this good will remain fresh before spoiling.
-      </span>
-     </div>
+    <div class="container-fluid">
+        <div class="row" id="formbackground">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group ">
+                    <label class="control-label requiredField" for="product">Product
+                    <span class="asteriskField">
+                        *
+                    </span>
+                    </label>
+                    <%= f.text_field :product, class:"form-control", id:"product" %>
+                    <!-- <input class="form-control" id="product" name="barter[product]" placeholder="Enter good or service here" type="text"/> -->
+                </div>
 
+                <div class="form-group ">
+                    <label class="control-label requiredField" for="textarea" id="description">
+                        Description
+                        <span class="asteriskField">
+                            *
+                        </span>
+                    </label>
+                    <%= f.text_area :description, class:"form-control", id:"desc" %>
+                    <!-- <textarea class="form-control" cols="40" id="textarea" name="barter[description]" placeholder="describe your good or service" rows="5"></textarea> -->
+                </div>
 
-     <div class="form-group">
-      <div>
-        <button class="btn btn-default " id="newbarter" name="submit" type="submit"/>
-        Submit
-        </button>
-      </div>
-     </div>
-   </div>
-  </div>
- </div>
+                <div class="form-group" id="div_radio">
+                    <label class="control-label requiredField" for="radio">
+                        Select a Choice
+                        <span class="asteriskField">
+                            *
+                        </span>
+                    </label>
+                    <div class="">
+                        <label class="radio-inline">
+                            <!-- <input name="barter[category]" type="radio" value="Services"/> -->
+                            <%= f.radio_button 'category', 'Goods' %> Goods
+                        </label>
+
+                        <label class="radio-inline">
+                            <!-- <input name="barter[category]" type="radio" value="Goods"/> -->
+                            <%= f.radio_button 'category', 'Services' %> Services
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label class="control-label requiredField" for="select">
+                        Neighborhood
+                        <span class="asteriskField">
+                            *
+                        </span>
+                    </label>
+
+                    <select class="select form-control" id="select" name="barter[neighborhood]">
+                        <option disabled="disabled" >Select a Neighborhood</option>
+                        <option value="hillcrest" <%= 'selected' if !@barter.neighborhood.nil? && @barter.neighborhood.downcase == 'hillcrest'%> >
+                            Hillcrest
+                        </option>
+                        <option value="little italy" <%= 'selected' if !@barter.neighborhood.nil? && @barter.neighborhood.downcase == 'little italy'%> >
+                            Little Italy
+                        </option>
+                        <option value="university heights" <%= 'selected' if !@barter.neighborhood.nil? && @barter.neighborhood.downcase == 'university heights'%> >
+                            University Heights
+                        </option>
+                        <option value="kensington" <%= 'selected' if !@barter.neighborhood.nil? && @barter.neighborhood.downcase == 'kensington'%> >
+                            Kensington
+                        </option>
+                        <option value="north park"
+                            <%= 'selected' if !@barter.neighborhood.nil? && @barter.neighborhood.downcase == 'north park'%> >
+                            North Park
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group ">
+                    <label class="control-label requiredField" for="textarea" id="interested_in">
+                        Interested In:
+                        <span class="asteriskField">
+                            *
+                        </span>
+                    </label>
+                    <%= f.text_area :interested_in, class:"form-control"%>
+                    <!-- <textarea class="form-control" cols="40" id="textarea" name="barter[interested_in]" placeholder="describe what you would be interested in trading for or provide an estimated value of your good or service" rows="5"></textarea> -->
+                </div>
+                <div class="form-group ">
+                    <label class="control-label requiredField" for="date">
+                        Expiration Date
+                        <span class="asteriskField">
+                            *
+                        </span>
+                    </label>
+                    <%= f.date_field :expiration, class:"form-control", id:"expiration" %>
+                        Set an expiration date for your goods or services. Your post will be automatically removed if still active on this date. For perishable goods, please indicate how long this good will remain fresh before spoiling.
+                </div>
+
+                <div class="form-group">
+                Upload an image of your good or service
+                <%= f.file_field :image, id:"image" %>
+              </div>
+
+                <div class="form-group" id="newbarterbutton">
+                    <div>
+                        <button class="btn btn-default " id="submit" name="submit" type="submit"/>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 <% end %>

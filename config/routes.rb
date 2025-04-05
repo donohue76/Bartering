@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/accept' => 'barters#accept'
   # resources :comments
   # devise_for :users, path_names: {login: "login", logout: "logout"}
 
@@ -9,8 +10,16 @@ Rails.application.routes.draw do
   resources :users
   # resources :barters
 
+  post 'comments/:id/accept' => 'comments#accept'
+  post 'comments/:id/decline' => 'comments#decline'
+
   resources :barters do
-    resources :comments
+    resources :comments do
+      collection do
+        #post '/accept/:id' => :accept, as: 'comment_accept'
+        # post '/decline/:id' => :decline, as: 'comment_decline'
+      end
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -25,7 +34,9 @@ Rails.application.routes.draw do
   get '/university_heights' => 'barters#university_heights'
   get '/little_italy' => 'barters#little_italy'
   get '/selection' => 'barters#select'
-
+  get '/profile' => 'users#profile'
+  get '/unauthorized' => 'user#unauthorized'
+  
   # You can have the root of your site routed with "root"
   # root 'barter#landing'
   root 'barters#landing'

@@ -9,11 +9,13 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th>Image</th>
       <th>Product </th>
       <th>Description</th>
       <th>Category</th>
-      <th>Expiration</th>
       <th>Neighborhood</th>
+      <th>Interested In</th>
+      <th>Expiration</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,13 +23,18 @@
   <tbody>
     <% @barters.each do |barter| %>
       <tr>
+        <% if barter.image_file_name %>
+          <td><%= link_to image_tag(barter.image.url(:small)), barter.image.url %></td>
+        <% else %>
+          <td>No Image</td>
+        <% end %>
         <td><%= barter.product %></td>
         <td><%= barter.description %></td>
         <td><%= barter.category %></td>
-        <td><%= barter.expiration %></td>
         <td><%= barter.neighborhood.capitalize %></td>
-        <td><%= link_to 'Edit', edit_barter_path(barter) %></td>
-        <td><%= link_to 'Destroy', barter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= barter.interested_in %></td>
+        <td><%= barter.expiration %></td>
+        <td><%= link_to 'Select', barter_path(barter) %></td>
       </tr>
     <% end %>
   </tbody>

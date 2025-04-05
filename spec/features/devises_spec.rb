@@ -9,7 +9,7 @@ RSpec.feature "Devises", type: :feature do
       visit 'users/sign_up'
       expect(page).to have_content("Sign up")
     end
-    
+
     #  Story: As a user I can sign up with email address and password.
     it "should sign up" do
       visit 'users/sign_up'
@@ -84,12 +84,4 @@ RSpec.feature "Devises", type: :feature do
     expect(current_path).to eq('/')
     expect(page).to have_content("TRADE")
   end
-
-
-  # def create_apt
-  #   click_link 'New Barter'
-  #   click_button 'Choose File'
-  #   attach_file "File", "spec/asset_specs/photos/photo.jpg"
-  #   fill_in "apartment[address]", with: "123 any street"
-  # end
 end

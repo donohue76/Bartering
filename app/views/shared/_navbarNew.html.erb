@@ -1,56 +1,62 @@
 <div class="container">
 
-  <!-- The justified navigation menu is meant for single line per list item.
-  Multiple lines will require custom code not provided by Bootstrap. -->
-  <div class="masthead">
-    <h3 id="tradingpost">TRADE 'N' POST</h3>
-    <nav>
-      <ul class="nav nav-justified" id="navigation">
-        <li class="active"><a href="/">Home</a></li>
+    <!-- The justified navigation menu is meant for single line per list item.
+    Multiple lines will require custom code not provided by Bootstrap. -->
+    <div class="masthead">
+        <h3 id="tradingpost"> TRADE =>|<= POST
+        </h3>
+        <nav>
+            <ul class="nav nav-justified" id="navigation">
+                <li>
+                    <%= link_to "Home", root_path %>
+                </li>
 
-        <!-- devise login/logout -->
-        <% if user_signed_in? %>
-        <li>
-          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-        </li>
-        <% else %>
-        <li id="log_out">
-          <%= link_to('Login', new_user_session_path)  %>
-        </li>
-        <% end %>
+                <!-- devise login/logout -->
+                <% if user_signed_in? %>
+                <li>
+                    <%= link_to "Profile", profile_path %>
+                </li>
+                <li>
+                    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+                </li>
+                <% else %>
+                <li id="log_out">
+                    <%= link_to('Login', new_user_session_path)  %>
+                </li>
+                <li>
+                    <%= link_to "Sign up", new_user_registration_path %>
+                </li>
+                <% end %>
 
-        <li>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Location <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-header"></li>
-            <li><%= link_to "All Listings", barters_path %></li>
-            <li class="nav-divider"></li>
-            <li><%= link_to "Hillcrest", hillcrest_path %></li>
-            <li class="nav-divider"></li>
-            <li><%= link_to "North Park", north_park_path %></li>
-            <li class="nav-divider"></li>
-            <li><%= link_to "Kensington", kensington_path %></li>
-            <li class="nav-divider"></li>
-            <li><%= link_to "University Heights", university_heights_path %></li>
-            <li class="nav-divider"></li>
-            <li><%= link_to "Little Italy", little_italy_path %></li>
-            <li class="divider"></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories<b class="caret"></b></a>
-          <ul class="dropdown-menu">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Location <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
+                        <li><%= link_to "All Listings", barters_path %></li>
+                        <li class="nav-divider"></li>
+                        <li><%= link_to "Hillcrest", hillcrest_path %></li>
+                        <li class="nav-divider"></li>
+                        <li><%= link_to "North Park", north_park_path %></li>
+                        <li class="nav-divider"></li>
+                        <li><%= link_to "Kensington", kensington_path %></li>
+                        <li class="nav-divider"></li>
+                        <li><%= link_to "University Heights", university_heights_path %></li>
+                        <li class="nav-divider"></li>
+                        <li><%= link_to "Little Italy", little_italy_path %></li>
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
 
-            <li class="dropdown-header"></li>
-            <li><%= link_to "Goods", goods_path %></li>
-            <li class="nav-divider"></li>
-            <li><%= link_to "Services", services_path %></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </div>
+                        <li class="dropdown-header"></li>
+                        <li><%= link_to "Goods", goods_path %></li>
+                        <li class="nav-divider"></li>
+                        <li><%= link_to "Services", services_path %></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>

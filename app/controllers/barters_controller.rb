@@ -55,29 +55,33 @@ class BartersController < ApplicationController
     @barters = Barter.where("expiration >= ? AND neighborhood = ?", target_expiration, target_neighborhood)
   end
 
-  # def filter_neighborhood(neighborhood)
-  #   barters = Barter.all
-  #   if barters.empty?
-  #     @barters = Barter.all
-  #   else
-  #     @barters = Barter.where(neighborhood: neighborhood)
-  #   end
-  # end
-  #
-  # def filter_category(category)
-  #
-  # end
 
   def select
-    @barter = Barter.find(params[:id])
+      @barter = Barter.find(params[:id])
   end
 
   # GET /barters/1
   # GET /barters/1.json
   def show
-    @barter = Barter.find(params[:id])
-    @user = User.find(@barter.user_id)
+      @barter = Barter.find(params[:id])
+      @barters = @barter.comments
+      @user = User.find(@barter.user_id)
+      if @barters && @barters.length > 0
+          @comment_id = @barters.last.id
+      else
+          @comment_id = 0
+      end
   end
+
+  def accept
+    comment = Comment.find(id)
+    comment.accept = true
+    comment.save
+  end
+
+  def decline
+  end
+
 
   # GET /barters/new
   def new
@@ -86,22 +90,27 @@ class BartersController < ApplicationController
 
   # GET /barters/1/edit
   def edit
+      @barter = Barter.find(params[:id])
   end
 
   # POST /barters
   # POST /barters.json
   def create
-    @barter = current_user.barters.build(barter_params)
+      if barter_params[:expiration] >= Date.today.to_s
+          @barter = current_user.barters.build(barter_params)
 
-    respond_to do |format|
-      if @barter.save
-        format.html { redirect_to @barter, notice: 'Barter was successfully created.' }
-        format.json { render :show, status: :created, location: @barter }
+          respond_to do |format|
+              if @barter.save
+                  format.html { redirect_to @barter, notice: 'Barter was successfully created.' }
+                  format.json { render :show, status: :created, location: @barter }
+              else
+                  format.html { render :new }
+                  format.json { render json: @barter.errors, status: :unprocessable_entity }
+              end
+          end
       else
-        format.html { render :new }
-        format.json { render json: @barter.errors, status: :unprocessable_entity }
+        redirect_to new_barter_path, {alert: 'Barter must be created with an expiration date equal to today or later'}
       end
-    end
   end
 
   # PATCH/PUT /barters/1
@@ -136,6 +145,6 @@ class BartersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def barter_params
-    params.require(:barter).permit(:product, :description, :category, :neighborhood, :expiration)
+    params.require(:barter).permit(:product, :description, :category, :neighborhood, :interested_in, :expiration, :image)
   end
 end

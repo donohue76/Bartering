@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :barters
   has_many :comments
+
+  def admin?
+      self.name == "Admin"
+  end
 end

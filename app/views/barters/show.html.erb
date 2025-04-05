@@ -1,43 +1,71 @@
-<p id="notice"><%= notice %></p>
-
-<table class="table table-hover">
+ <table class="table table-hover" id="">
   <thead>
     <tr>
+      <th id="information">Listing Information</th>
+    </tr>
+    <tr>
+      <th>Image</th>
       <th>Product</th>
       <th>Description</th>
       <th>Category</th>
       <th>Neighborhood</th>
+      <th>Interested In</th>
       <th>Expiration</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 ​
+  <!-- <tbody class="table table-bordered" id="infotd"> -->
   <tbody>
     <tr>
+      <td><%= link_to image_tag(@barter.image.url(:small)), @barter.image.url %></td>
       <td><%= @barter.product %></td>
       <td><%= @barter.description %></td>
       <td><%= @barter.category %></td>
       <td><%= @barter.neighborhood %></td>
+      <td><%= @barter.interested_in %></td>
       <td><%= @barter.expiration %></td>
     </tr>
   </tbody>
 </table>
 
-<%= link_to "Let's Talk", new_barter_comment_path(@barter.id) %>
 </br>
 
-<table class="table table-bordered">
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>User</th>
+      <th>Trade Discussion</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th>Message</th>
-      <th>Time</th>
+      <th>Timestamp</th>
     </tr>
   </thead>
   <tbody>
     <% @barter.comments.each do |comment| %>
     <tr>
-      <td><%= comment.user.email %></td>
+      <!-- next if skip this element in the iteration if the accept boolean is equal to false -->
+      <% next if comment.accept == false %>
+      <!-- if accept column = true all false comments disappear. -->
+      <% if comment.accept == nil && current_user.id == @barter.user_id %>
+        <td><%= button_to 'Accept',  '/comments/' + comment.id.to_s + '/accept', method: :post %></td>
+
+        <!-- button_to = link to -->
+        <td><%= button_to 'Decline', '/comments/' + comment.id.to_s + '/decline', method: :post %></td>
+      <% else %>
+        <td>Trade Complete</td>
+        <td></td>
+      <% end %>
+
+      <td></td>
+      <!-- get user name, from user table, through comments table -->
+
+      <td><%= comment.user.username %></td>
+      <!-- access comment table. comment column -->
       <td><%= comment.comment %></td>
       <td><%= comment.created_at.to_formatted_s(:long_ordinal)  %></td>
     </tr>
@@ -45,14 +73,29 @@
   </tbody>
 </table>
 
+</br>
   <!--Links to the the 'New Barter form to create a new item to trade'
   -->
+
 <div class="link">
-  <%= link_to 'Back', barters_path %> |
-  <%= link_to 'New Comment', new_barter_comment_path(@barter.id) %>
+
+  <!-- the bartering process is not done -->
+  <% @done = [] %>
+
+  <!-- pull all comments from comments table in db  -->
+  <% @barter.comments.each do |comment| %>
+  <!-- if comment has value of true(accepted) -->
+    <% if comment.accept == true %>
+    <!--  -->
+      <% @done << 1 %>
+    <% end %>
+  <% end %>
+
+  <% if @done.empty? %>
+    <%= link_to "Let's Talk and Trade", new_barter_comment_path(@barter.id) %> |
+  <% end %>
+  <%= link_to 'Back', barters_path %>
 </div>
 <br/>
-<form>
-  <input type="button" value="Accept" name="accept_button"/>
-  <input type="button" value="Decline" name="accept_button"/>
-</form>
+<br/>
+<br/>

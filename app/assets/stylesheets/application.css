@@ -2,9 +2,50 @@ body {
   padding-top: 20px;
   background-color: #f09b1e
 }
-.link {
 
+#intro_header {
+    text-align: center;
+    font-weight:bolder;
+    font-family: fantasy;
 }
+
+#intro_sentence {
+    text-align: center;;
+    font-family: fantasy;
+}
+
+#intro_paragraph {
+    text-align: justify;
+    font-family: fantasy;
+    font-size: large;
+    font-weight: bolder;
+    margin: 0px 10px 10px 10px;
+}
+.unauthorized {
+    font-family: fantasy;
+    text-align: center;
+}
+
+.alert {
+    color: #093b5c;
+    font-family:fantasy;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+#error_explanation {
+    font-family: fantasy;
+    font-size: 18px;
+    color: #093b5c;
+    font-weight: bolder;
+}
+
+#sam {
+    padding: 0px;
+    max-width: 900px;
+    max-height: 600px;
+}
+
 #tradingpost {
   color: #1f3842;
   font-size: 72px;
@@ -21,6 +62,19 @@ body {
 .img-responsive center-block {
   width: 100%;
 }
+
+#infotd {
+    background-color: #f09b1e
+}
+
+#information {
+    border: 0
+}
+
+#newbarterbutton {
+    margin-bottom: 10%;
+}
+
 
 /*#navigation {
 background-color: #031724;
@@ -42,11 +96,11 @@ color: #1f3842;
   /*nav bar text color*/
   color: white;
   text-align: center;
+  font-size: large;
   /*nav bar menu(excluding home)*/
   background-color: #4f8da6;
   /*background-image:         linear-gradient(to bottom, #4f8da6 0%,#4f8da6 100%);*/
   background-repeat: repeat-x; /* Repeat the gradient */
-  border-bottom: 1px solid white;
 }
 .nav-justified > .active > a,
 .nav-justified > .active > a:hover,

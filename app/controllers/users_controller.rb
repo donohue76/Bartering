@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+    before_action :authenticate_user!
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
   # GET /users
   # GET /users.json
   def index
@@ -10,6 +10,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    render 'users/unauthorized' unless current_user.id == params[:id].to_i
+  end
+
+
+  def profile
+    @user = User.find(current_user.id)
+    @comments = @user.comments
   end
 
   # GET /users/new
@@ -19,11 +26,13 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+      render 'users/unauthorized' unless current_user.id == params[:id].to_i
   end
 
   # POST /users
   # POST /users.json
   def create
+    render 'users/unauthorized' unless current_user.id == params[:id].to_i
     @user = User.new(user_params)
 
     respond_to do |format|
@@ -40,6 +49,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    render 'users/unauthorized' unless current_user.id == params[:id].to_i
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }

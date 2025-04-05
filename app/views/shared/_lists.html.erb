@@ -5,6 +5,7 @@
       <th>Description</th>
       <th>Category</th>
       <th>Neighborhood</th>
+      <th>Interested In</th>
       <th>Expiration</th>
       <th colspan="3"></th>
     </tr>
@@ -17,6 +18,7 @@
         <td><%= barter.description %></td>
         <td><%= barter.category %></td>
         <td><%= barter.neighborhood %></td>
+        <td><%= barter.interested_in %></td>
         <td><%= barter.expiration %></td>
         <td><%= link_to 'Select', '/selection' %></td>
         <td><%= link_to 'Edit', edit_barter_path(barter) %></td>

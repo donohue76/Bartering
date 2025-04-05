@@ -1,0 +1,162 @@
+body {
+  padding-top: 20px;
+  background-color: #f09b1e
+}
+
+#intro_header {
+    text-align: center;
+}
+
+#intro_paragraph {
+    text-align: center;
+}
+
+
+#tradingpost {
+  color: #1f3842;
+  font-size: 72px;
+  font-family: fantasy;
+  font-weight: bolder;
+  text-align: center;
+}
+
+#intro {
+  margin: 0px 20px 10px 20px;
+  text-align:justify;
+}
+
+.img-responsive center-block {
+  width: 100%;
+}
+
+#infotd {
+    background-color: #f09b1e
+}
+
+#information {
+    border: 0
+}
+
+#newbarterbutton {
+    margin-bottom: 10%;
+}
+
+
+/*#navigation {
+background-color: #031724;
+color: #1f3842;
+}*/
+
+/* Customize the nav-justified links to be fill the entire space of the .navbar */
+
+/*.nav-justified {
+  background-color: #red;
+  border: 1px solid #red;
+  border-radius: 5px;
+}*/
+.nav-justified > li > a {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 0;
+  font-weight: bold;
+  /*nav bar text color*/
+  color: white;
+  text-align: center;
+  font-size: large;
+  /*nav bar menu(excluding home)*/
+  background-color: #4f8da6;
+  /*background-image:         linear-gradient(to bottom, #4f8da6 0%,#4f8da6 100%);*/
+  background-repeat: repeat-x; /* Repeat the gradient */
+}
+.nav-justified > .active > a,
+.nav-justified > .active > a:hover,
+.nav-justified > .active > a:focus {
+/*changes background color navbar home*/
+  background-color: #4f8da6;
+  background-image: none;
+          box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
+}
+.nav-justified > li:first-child > a {
+  border-radius: 5px 5px 0 0;
+}
+.nav-justified > li:last-child > a {
+  border-bottom: 0;
+  border-radius: 0 0 5px 5px;
+}
+
+@media (min-width: 768px) {
+  .nav-justified {
+    max-height: 52px;
+  }
+  /*navbar inside borders*/
+  .nav-justified > li > a {
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+  }
+  .nav-justified > li:first-child > a {
+    border-left: 0;
+    border-radius: 5px 0 0 5px;
+  }
+  .nav-justified > li:last-child > a {
+    border-right: 0;
+    border-radius: 0 5px 5px 0;
+  }
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .masthead,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+/*This is for the footer*/
+.text {
+  color: #1f3842;
+  margin: 0px;
+  padding-top: 40px;
+  text-shadow: 1px 1px #f09b1e;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #4f8da6;
+  /*padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 40px;*/
+  /*border-top: 2px solid ;*/
+}
+.footer-container {
+  padding: 0px;
+  margin: 0px;
+}
+
+/*<!-- Inline CSS based on choices in "Settings" tab -->*/
+.bootstrap-iso .formden_header h2,
+.bootstrap-iso .formden_header p,
+.bootstrap-iso form {
+  font-family: Arial, Helvetica, sans-serif; color: #1f3842
+}
+
+.bootstrap-iso form button,
+.bootstrap-iso form button:hover {
+  color: #1f3842 !important;
+}
+.bootstrap-iso .form-control:focus {
+  border-color: #4f8da6;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(79, 141, 166, 0.6);
+}
+
+.asteriskField {
+  color: red;
+}
+#formbackground {
+  background-color: #F09B1E;
+}
